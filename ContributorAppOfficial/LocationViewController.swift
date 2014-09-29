@@ -28,7 +28,6 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
         itemAnnotation.setCoordinate(initialLocation)
         itemAnnotation.title = "Item Title"
         mapView.addAnnotation(itemAnnotation)
-        
     }
     
     override func didReceiveMemoryWarning() {

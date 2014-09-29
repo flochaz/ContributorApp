@@ -8,6 +8,7 @@
         <scene sceneID="k6j-8g-Ti8">
             <objects>
                 <navigationController id="PJz-kE-0RF" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vNd-cT-KaO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,20 +30,42 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="What type of construction would you like to list ?" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9s-Sd-Tz9">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="141" width="240" height="81"/>
+                                </variation>
+                            </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Lr-dbT">
                                 <rect key="frame" x="0.0" y="493" width="414" height="131"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="370" width="320" height="198"/>
+                                </variation>
                                 <connections>
                                     <segue destination="y2I-9g-6Cn" kind="embed" id="Ma4-YG-sIN"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="d9s-Sd-Tz9"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="d9s-Sd-Tz9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Construction Type" id="vdW-PH-iSc"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,7 +155,7 @@
                         <viewControllerLayoutGuide type="bottom" id="7yJ-RP-6tt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d4y-Lj-PKv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jAo-3P-Pa8">
@@ -140,11 +163,23 @@
                                 <items>
                                     <navigationItem title="Monument Type" id="gVW-Hw-D33"/>
                                 </items>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                </variation>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Great ! What type of monument it is ?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="omg-Cg-sjd">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="135" width="240" height="60"/>
+                                </variation>
+                            </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-JQ-oga">
                                 <rect key="frame" x="0.0" y="469" width="414" height="131"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="539" width="375" height="128"/>
+                                    <rect key="frame" x="0.0" y="370" width="320" height="198"/>
                                 </variation>
                                 <connections>
                                     <segue destination="RwJ-CF-oNJ" kind="embed" id="M4S-tW-DdU"/>
@@ -152,12 +187,22 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="omg-Cg-sjd"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="omg-Cg-sjd"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIn-Xu-ZhV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2049.75" y="-690.5"/>
+            <point key="canvasLocation" x="2049" y="-691"/>
         </scene>
         <!--MonumentTypeTableViewController-->
         <scene sceneID="rsG-f7-sVA">
@@ -243,7 +288,7 @@
                         <viewControllerLayoutGuide type="bottom" id="DA0-Bt-Dlc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m5l-Il-jls">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nzw-yG-67H">
@@ -251,38 +296,10 @@
                                 <items>
                                     <navigationItem title="Location" id="82K-cn-W5Q"/>
                                 </items>
-                            </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8au-Hu-3cT">
-                                <rect key="frame" x="16" y="528" width="207" height="66"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="370" id="tBR-Cn-1gz"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="tBR-Cn-1gz"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="tBR-Cn-1gz"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="delegate" destination="B7N-RM-aNJ" id="wj1-gF-eNl"/>
-                                </connections>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgf-sB-6PP">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="305" y="160" width="34" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 </variation>
-                                <connections>
-                                    <segue destination="PPH-rk-fTX" kind="show" id="zdR-d9-FaV"/>
-                                </connections>
-                            </button>
+                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LV7-nq-Xah">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -297,55 +314,78 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="87" y="157" width="210" height="30"/>
+                                    <rect key="frame" x="55" y="130" width="210" height="30"/>
                                 </variation>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Where is it located ?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r8O-WU-XBY">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="78" width="240" height="38"/>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MO1-ud-oRq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="136" y="156" width="48" height="30"/>
+                                </variation>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-bf-tPB">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="262" width="240" height="252"/>
+                                </variation>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6W-y3-hGR">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="136" y="216" width="32" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="PPH-rk-fTX" kind="show" id="tNb-gz-bgZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8au-Hu-3cT" firstAttribute="leading" secondItem="nzw-yG-67H" secondAttribute="leading" id="MMR-V2-0qP"/>
-                            <constraint firstItem="8au-Hu-3cT" firstAttribute="bottom" secondItem="DA0-Bt-Dlc" secondAttribute="top" id="RuF-OS-T9i"/>
-                            <constraint firstItem="8au-Hu-3cT" firstAttribute="trailing" secondItem="DA0-Bt-Dlc" secondAttribute="trailing" id="bBW-4E-CJf"/>
-                            <constraint firstItem="8au-Hu-3cT" firstAttribute="leading" secondItem="DA0-Bt-Dlc" secondAttribute="leading" id="qNO-w8-apr"/>
-                            <constraint firstItem="8au-Hu-3cT" firstAttribute="trailing" secondItem="nzw-yG-67H" secondAttribute="trailing" id="uMz-em-wuj"/>
-                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="tgf-sB-6PP"/>
                                 <exclude reference="LV7-nq-Xah"/>
                                 <exclude reference="p1l-Vj-D9y"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="MMR-V2-0qP"/>
-                                <exclude reference="RuF-OS-T9i"/>
-                                <exclude reference="bBW-4E-CJf"/>
-                                <exclude reference="qNO-w8-apr"/>
-                                <exclude reference="uMz-em-wuj"/>
+                                <exclude reference="r8O-WU-XBY"/>
+                                <exclude reference="MO1-ud-oRq"/>
+                                <exclude reference="aF1-bf-tPB"/>
+                                <exclude reference="L6W-y3-hGR"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="tgf-sB-6PP"/>
                                 <include reference="LV7-nq-Xah"/>
                                 <include reference="p1l-Vj-D9y"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="MMR-V2-0qP"/>
-                                <include reference="RuF-OS-T9i"/>
-                                <include reference="bBW-4E-CJf"/>
-                                <include reference="qNO-w8-apr"/>
-                                <include reference="uMz-em-wuj"/>
+                                <include reference="r8O-WU-XBY"/>
+                                <include reference="MO1-ud-oRq"/>
+                                <include reference="aF1-bf-tPB"/>
+                                <include reference="L6W-y3-hGR"/>
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="mapView" destination="8au-Hu-3cT" id="fJL-1p-0zO"/>
+                        <outlet property="mapView" destination="aF1-bf-tPB" id="ZCm-Gv-bfC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCL-rO-PHP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3822" y="321"/>
+            <point key="canvasLocation" x="3862.5" y="321"/>
         </scene>
         <!--MoreInfoViewController-->
         <scene sceneID="aoF-UD-orU">
@@ -356,7 +396,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Z5S-LM-fWd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X0j-b3-1N7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-OB-QXf">
@@ -365,7 +405,7 @@
                                     <navigationItem title="More info" id="V1N-1g-6oR"/>
                                 </items>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 </variation>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQx-Xz-r3N">
@@ -376,8 +416,80 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="184" y="628" width="34" height="30"/>
                                 </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who build it ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lf-G2-cwj">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="107" y="174" width="106" height="26"/>
+                                </variation>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Just a little more about it ..." translatesAutoresizingMaskIntoConstraints="NO" id="dnI-Um-eVe">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="39" y="89" width="242" height="34"/>
+                                </variation>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7rk-vV-Tmf">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="39" y="208" width="242" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euD-ng-BNT">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="129" y="246" width="63" height="26"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-gn-whJ">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="39" y="280" width="242" height="30"/>
+                                </variation>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zmg-Aq-7sp">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <rect key="frame" x="40" y="350" width="240" height="128"/>
+                                </variation>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVK-k1-a6m">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="133" y="316" width="55" height="26"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-ql-WDo">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="144" y="486" width="32" height="30"/>
+                                </variation>
                                 <connections>
-                                    <segue destination="FaF-6t-k31" kind="show" id="Het-eo-mTP"/>
+                                    <segue destination="FaF-6t-k31" kind="show" id="pRZ-O6-w9d"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -386,16 +498,32 @@
                             <mask key="subviews">
                                 <exclude reference="Rzl-OB-QXf"/>
                                 <exclude reference="jQx-Xz-r3N"/>
+                                <exclude reference="7lf-G2-cwj"/>
+                                <exclude reference="dnI-Um-eVe"/>
+                                <exclude reference="7rk-vV-Tmf"/>
+                                <exclude reference="euD-ng-BNT"/>
+                                <exclude reference="AdU-gn-whJ"/>
+                                <exclude reference="zmg-Aq-7sp"/>
+                                <exclude reference="iVK-k1-a6m"/>
+                                <exclude reference="AaR-ql-WDo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Rzl-OB-QXf"/>
                                 <include reference="jQx-Xz-r3N"/>
+                                <include reference="7lf-G2-cwj"/>
+                                <include reference="dnI-Um-eVe"/>
+                                <include reference="7rk-vV-Tmf"/>
+                                <include reference="euD-ng-BNT"/>
+                                <include reference="AdU-gn-whJ"/>
+                                <include reference="zmg-Aq-7sp"/>
+                                <include reference="iVK-k1-a6m"/>
+                                <include reference="AaR-ql-WDo"/>
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yT6-tO-iJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -419,42 +547,69 @@
                                     <navigationItem title="Summary" id="Wxl-Hz-QXW"/>
                                 </items>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 </variation>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dYh-Pu-434">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="75" y="70" width="264" height="315"/>
+                                    <rect key="frame" x="28" y="58" width="264" height="242"/>
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPo-Fu-eZL">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="What?">
+                                <state key="normal" title="Videos">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="185" y="481" width="45" height="30"/>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRY-FR-AIO">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="What?">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="294" y="481" width="45" height="30"/>
+                                    <rect key="frame" x="137" y="398" width="47" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOu-6i-TQ3">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Add Pics">
+                                <state key="normal" title="Photos">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="75" y="481" width="62" height="30"/>
+                                    <rect key="frame" x="35" y="398" width="49" height="30"/>
                                 </variation>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZG-CF-HGw">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="28" y="308" width="62" height="82"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Po-Pp-vm5">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="129" y="308" width="62" height="82"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="98o-v1-9gu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="230" y="308" width="62" height="82"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRY-FR-AIO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="More">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="243" y="398" width="36" height="30"/>
+                                </variation>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Who :   When:Why:" translatesAutoresizingMaskIntoConstraints="NO" id="2LK-4C-aBH">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="29" y="436" width="56" height="124"/>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -462,8 +617,12 @@
                                 <exclude reference="dWT-e2-d5J"/>
                                 <exclude reference="dYh-Pu-434"/>
                                 <exclude reference="vPo-Fu-eZL"/>
-                                <exclude reference="tRY-FR-AIO"/>
                                 <exclude reference="eOu-6i-TQ3"/>
+                                <exclude reference="DZG-CF-HGw"/>
+                                <exclude reference="3Po-Pp-vm5"/>
+                                <exclude reference="98o-v1-9gu"/>
+                                <exclude reference="tRY-FR-AIO"/>
+                                <exclude reference="2LK-4C-aBH"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -471,12 +630,16 @@
                                 <include reference="dWT-e2-d5J"/>
                                 <include reference="dYh-Pu-434"/>
                                 <include reference="vPo-Fu-eZL"/>
-                                <include reference="tRY-FR-AIO"/>
                                 <include reference="eOu-6i-TQ3"/>
+                                <include reference="DZG-CF-HGw"/>
+                                <include reference="3Po-Pp-vm5"/>
+                                <include reference="98o-v1-9gu"/>
+                                <include reference="tRY-FR-AIO"/>
+                                <include reference="2LK-4C-aBH"/>
                             </mask>
                         </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4f-c1-yVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -491,25 +654,50 @@
                         <viewControllerLayoutGuide type="bottom" id="4R7-r2-Mkg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7a9-bP-UgM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxB-cG-7BO">
-                                <rect key="frame" x="0.0" y="463" width="414" height="130"/>
-                                <connections>
-                                    <segue destination="Hq5-yp-27o" kind="embed" id="xjD-r1-2BQ"/>
-                                </connections>
-                            </containerView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-pv-HQi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Edifice Type" id="CYL-ZB-x8Q"/>
                                 </items>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                </variation>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Nice ! What type of edifice is ?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ITE-hk-Bo9">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="98" width="240" height="60"/>
+                                </variation>
+                            </textView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxB-cG-7BO">
+                                <rect key="frame" x="0.0" y="463" width="414" height="130"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="370" width="320" height="198"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="Hq5-yp-27o" kind="embed" id="xjD-r1-2BQ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ITE-hk-Bo9"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ITE-hk-Bo9"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8x7-s4-RJf" sceneMemberID="firstResponder"/>
             </objects>
@@ -592,6 +780,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="x9b-A7-OLd"/>
+        <segue reference="Dxg-S2-OaF"/>
     </inferredMetricsTieBreakers>
 </document>
