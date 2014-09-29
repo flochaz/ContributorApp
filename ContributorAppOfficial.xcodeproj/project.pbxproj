@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B15D2C719D4664C005C636C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B15D2C619D4664C005C636C /* MapKit.framework */; };
+		6B15D2CB19D46A60005C636C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B15D2CA19D46A60005C636C /* LocationViewController.swift */; };
 		6B91C19E19D30F88001C4843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C19D19D30F88001C4843 /* AppDelegate.swift */; };
 		6B91C1A119D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C19F19D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld */; };
 		6B91C1A319D30F88001C4843 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C1A219D30F88001C4843 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B15D2C619D4664C005C636C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6B15D2CA19D46A60005C636C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		6B91C19819D30F88001C4843 /* ContributorAppOfficial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContributorAppOfficial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91C19C19D30F88001C4843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B91C19D19D30F88001C4843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B15D2C719D4664C005C636C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +66,7 @@
 		6B91C18F19D30F88001C4843 = {
 			isa = PBXGroup;
 			children = (
+				6B15D2C619D4664C005C636C /* MapKit.framework */,
 				6B91C19A19D30F88001C4843 /* ContributorAppOfficial */,
 				6B91C1B319D30F88001C4843 /* ContributorAppOfficialTests */,
 				6B91C19919D30F88001C4843 /* Products */,
@@ -82,6 +88,7 @@
 				6B91C19D19D30F88001C4843 /* AppDelegate.swift */,
 				6B91C1A219D30F88001C4843 /* ViewController.swift */,
 				6B91C1A419D30F88001C4843 /* Main.storyboard */,
+				6B15D2CA19D46A60005C636C /* LocationViewController.swift */,
 				6B91C1A719D30F88001C4843 /* Images.xcassets */,
 				6B91C1A919D30F88001C4843 /* LaunchScreen.xib */,
 				6B91C19F19D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld */,
@@ -218,6 +225,7 @@
 				6B91C1A319D30F88001C4843 /* ViewController.swift in Sources */,
 				6B91C1A119D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld in Sources */,
 				6B91C19E19D30F88001C4843 /* AppDelegate.swift in Sources */,
+				6B15D2CB19D46A60005C636C /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +417,7 @@
 				6B91C1BC19D30F88001C4843 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B91C1BD19D30F88001C4843 /* Build configuration list for PBXNativeTarget "ContributorAppOfficialTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				6B91C1BF19D30F88001C4843 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
