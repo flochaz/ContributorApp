@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class LocationViewController: UIViewController, MKMapViewDelegate {
     
@@ -19,6 +20,27 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
         var latitudeDelta:CLLocationDegrees = 0.01
         var longitudeDelta:CLLocationDegrees = 0.01
         
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        var request = NSFetchRequest(entityName: "Image")
+        request.returnsObjectsAsFaults = false;
+        
+        var results: NSArray = context.executeFetchRequest(request,error: nil)!
+        if (results.count > 0){
+            for result in results{
+                let singleImage:Image = result as Image
+                println("getting back longitude and latitude")
+                println(singleImage.latitude)
+                println(singleImage.longitude)
+                latitude = singleImage.latitude
+                longitude = singleImage.longitude
+            }
+        }
+        else{
+            println("No image found in DB!")
+        }
+   
         var span:MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
         
         var initialLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
