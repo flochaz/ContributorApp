@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import CoreData
 
 class ConstructionTableViewController: UITableViewController {
 
-    var itemIndetifier:NSString!
+    var itemIndetifier:String!
+    var item:Item!
+   // var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+   // var context:NSManagedObjectContext!
+    var tableData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(itemIndetifier != nil){
-        println("Test variable transfer : " + itemIndetifier)
+        self.tableData.append("Monument");
+        self.tableData.append("Edifice");
+        self.tableData.append("Landscape");
+
+        
+        if(!itemIndetifier.isEmpty){
+        println("From table view Test variable transfer : " + itemIndetifier)
         }else{
-            println("test variable Not setted")
+            println("From table  test variable Not setted")
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,6 +39,49 @@ class ConstructionTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Default,
+            handler: {
+                (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
+        }))
+        self.item = getItem(self.itemIndetifier)
+        var constructionType:NSString =  tableData[indexPath.row]
+        addConstructionTypeToItem(item, constructionType: constructionType)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    func addConstructionTypeToItem(item: Item, constructionType: NSString){
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        item.desc = constructionType
+        context.save(nil)
+    }
+    
+    func getItem(itemId:String) -> Item {
+        var item:Item!
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        var request = NSFetchRequest(entityName: "Item")
+        request.returnsObjectsAsFaults = false;
+        println("search for item with identifier " + itemId)
+        //request.predicate = NSPredicate(format: "identifier = %@",itemId)
+        var results: NSArray = context.executeFetchRequest(request,error: nil)!
+        if (results.count > 0){
+            for result in results{
+                item = result as Item
+            }
+        }
+        else{
+            println("No item with id " + itemIndetifier + " found in DB!")
+        }
+        return item
     }
 
 

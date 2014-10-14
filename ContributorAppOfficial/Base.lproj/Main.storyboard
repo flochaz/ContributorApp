@@ -224,7 +224,7 @@
         <!--MonumentTypeViewController-->
         <scene sceneID="xR3-0m-H3R">
             <objects>
-                <viewController id="kgK-6A-3cJ" userLabel="MonumentTypeViewController" customClass="ViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kgK-6A-3cJ" userLabel="MonumentTypeViewController" customClass="ViewController2" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ddZ-a0-3c5"/>
                         <viewControllerLayoutGuide type="bottom" id="7yJ-RP-6tt"/>

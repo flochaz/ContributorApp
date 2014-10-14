@@ -11,11 +11,11 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate {
 
-    var itemIndetifier:NSString!
+    var itemIndetifier:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(itemIndetifier != nil){
+        if(!itemIndetifier.isEmpty){
             println("From ViewController Test variable transfer : " + itemIndetifier)
         }else{
             println("From ViewController  test variable Not setted")
@@ -27,9 +27,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.destinationViewController is ConstructionTableViewController{
         var svc = segue.destinationViewController as ConstructionTableViewController;
         
-        svc.itemIndetifier = "test2"
+        svc.itemIndetifier = itemIndetifier
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
