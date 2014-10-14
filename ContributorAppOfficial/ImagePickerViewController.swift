@@ -20,30 +20,13 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     var assetLib = ALAssetsLibrary()
     var url: NSURL = NSURL()
     var  location: CLLocation!
-    
+    var item:Item!
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
     }
     
-    @IBAction func saveImage(sender: AnyObject) {
-        println("Save Image")
-      var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-      var context:NSManagedObjectContext = appDelegate.managedObjectContext!
-        
-        var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
-        
-        image.url =  url.absoluteString!
-        image.imageData = UIImagePNGRepresentation(pickedImage)
-        if (location != nil) {
-            image.latitude = location.coordinate.latitude
-            image.longitude = location.coordinate.longitude
-        }
-        
-        context.save(nil)
-        println("Entry Saved")
-    }
     
     @IBAction func chooseImage(sender: AnyObject) {
         let imagePicker:UIImagePickerController = UIImagePickerController()
@@ -62,9 +45,14 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
                 var assetRep: ALAssetRepresentation = asset.defaultRepresentation()
                 var iref = assetRep.fullResolutionImage().takeUnretainedValue()
                 var image =  UIImage(CGImage: iref)
+                if(asset.valueForProperty(ALAssetPropertyLocation) != nil){
                 self.location = asset.valueForProperty(ALAssetPropertyLocation) as CLLocation
                 println("Image Location")
                 println(self.location)
+                }else
+                {
+                    println("Image with no location")
+                }
                 
             }
             }, failureBlock: {
@@ -74,11 +62,8 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
             }
         )
 
-        
         pickedImage = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         imageInfo = info
-        println(info)
-        println(info.objectForKey(UIImagePickerControllerMediaMetadata))
         imageView.image = pickedImage
         
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -113,6 +98,30 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    @IBAction func saveImage(sender: AnyObject) {
+        println("Save Image")
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as Item
+        item.identifier = NSUUID.UUID().UUIDString
+        println("item identifier : " + item.identifier)
+        var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
+        
+        image.url =  url.absoluteString!
+        image.imageData = UIImagePNGRepresentation(pickedImage)
+        if (location != nil) {
+            image.latitude = location.coordinate.latitude
+            image.longitude = location.coordinate.longitude
+        }
+        image.item = item
+        
+        context.save(nil)
+        println("Entry Saved")
+    }
+
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -120,14 +129,21 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
 
-    /*
+ 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var svc = segue.destinationViewController as ViewController;
+        if(!item.identifier.isEmpty){
+        svc.itemIndetifier = item.identifier
+        }else{
+                    svc.itemIndetifier = "NO IDENTIFIER"
+        }
+
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }
