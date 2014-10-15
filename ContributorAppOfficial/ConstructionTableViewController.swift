@@ -76,12 +76,24 @@ class ConstructionTableViewController: UITableViewController {
         if (results.count > 0){
             for result in results{
                 item = result as Item
+                println("FOUND THE ITEM")
             }
         }
         else{
             println("No item with id " + itemIndetifier + " found in DB!")
         }
         return item
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var svc = segue.destinationViewController as MonumentViewController;
+        if(!itemIndetifier.isEmpty){
+            svc.itemIndetifier = itemIndetifier
+        }else{
+            svc.itemIndetifier = "NO IDENTIFIER"
+        }
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
 
 

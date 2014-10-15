@@ -134,7 +134,7 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var svc = segue.destinationViewController as ViewController;
+        var svc = segue.destinationViewController as ConstructionViewController;
         if(!item.identifier.isEmpty){
         svc.itemIndetifier = item.identifier
         }else{

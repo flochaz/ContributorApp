@@ -10,13 +10,13 @@
 		6B11CF8119ECAC1400B525D0 /* ConstructionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF8019ECAC1400B525D0 /* ConstructionTableViewController.swift */; };
 		6B11CF8319ECB1FD00B525D0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF8219ECB1FD00B525D0 /* Image.swift */; };
 		6B11CF8519ECB1FD00B525D0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF8419ECB1FD00B525D0 /* Item.swift */; };
-		6B11CF8D19ECED3C00B525D0 /* MonumentTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF8C19ECED3C00B525D0 /* MonumentTypeTableViewController.swift */; };
-		6B11CF8F19ECED7500B525D0 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF8E19ECED7500B525D0 /* ViewController2.swift */; };
+		6B11CF8F19ECED7500B525D0 /* MonumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF8E19ECED7500B525D0 /* MonumentViewController.swift */; };
+		6B11CF9319EED37100B525D0 /* MonumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B11CF9219EED37100B525D0 /* MonumentTableViewController.swift */; };
 		6B15D2C719D4664C005C636C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B15D2C619D4664C005C636C /* MapKit.framework */; };
 		6B15D2CB19D46A60005C636C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B15D2CA19D46A60005C636C /* LocationViewController.swift */; };
 		6B91C19E19D30F88001C4843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C19D19D30F88001C4843 /* AppDelegate.swift */; };
 		6B91C1A119D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C19F19D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld */; };
-		6B91C1A319D30F88001C4843 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C1A219D30F88001C4843 /* ViewController.swift */; };
+		6B91C1A319D30F88001C4843 /* ConstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91C1A219D30F88001C4843 /* ConstructionViewController.swift */; };
 		6B91C1A619D30F88001C4843 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91C1A419D30F88001C4843 /* Main.storyboard */; };
 		6B91C1A819D30F88001C4843 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B91C1A719D30F88001C4843 /* Images.xcassets */; };
 		6B91C1AB19D30F88001C4843 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B91C1A919D30F88001C4843 /* LaunchScreen.xib */; };
@@ -40,15 +40,15 @@
 		6B11CF8019ECAC1400B525D0 /* ConstructionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructionTableViewController.swift; sourceTree = "<group>"; };
 		6B11CF8219ECB1FD00B525D0 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		6B11CF8419ECB1FD00B525D0 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		6B11CF8C19ECED3C00B525D0 /* MonumentTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonumentTypeTableViewController.swift; sourceTree = "<group>"; };
-		6B11CF8E19ECED7500B525D0 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		6B11CF8E19ECED7500B525D0 /* MonumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonumentViewController.swift; sourceTree = "<group>"; };
+		6B11CF9219EED37100B525D0 /* MonumentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonumentTableViewController.swift; sourceTree = "<group>"; };
 		6B15D2C619D4664C005C636C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6B15D2CA19D46A60005C636C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		6B91C19819D30F88001C4843 /* ContributorAppOfficial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContributorAppOfficial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91C19C19D30F88001C4843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B91C19D19D30F88001C4843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B91C1A019D30F88001C4843 /* ContributorAppOfficial.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContributorAppOfficial.xcdatamodel; sourceTree = "<group>"; };
-		6B91C1A219D30F88001C4843 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B91C1A219D30F88001C4843 /* ConstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructionViewController.swift; sourceTree = "<group>"; };
 		6B91C1A519D30F88001C4843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B91C1A719D30F88001C4843 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6B91C1AA19D30F88001C4843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -103,19 +103,19 @@
 		6B91C19A19D30F88001C4843 /* ContributorAppOfficial */ = {
 			isa = PBXGroup;
 			children = (
-				6B11CF8019ECAC1400B525D0 /* ConstructionTableViewController.swift */,
-				6BEBCDFE19DCED3D00F02ABB /* ImagePickerViewController.swift */,
-				6BEBCDFC19DCE96A00F02ABB /* AddInfoViewController.swift */,
 				6B91C19D19D30F88001C4843 /* AppDelegate.swift */,
-				6B91C1A219D30F88001C4843 /* ViewController.swift */,
-				6B91C1A419D30F88001C4843 /* Main.storyboard */,
+				6BEBCDFE19DCED3D00F02ABB /* ImagePickerViewController.swift */,
+				6B91C1A219D30F88001C4843 /* ConstructionViewController.swift */,
+				6B11CF8019ECAC1400B525D0 /* ConstructionTableViewController.swift */,
+				6B11CF8E19ECED7500B525D0 /* MonumentViewController.swift */,
+				6B11CF9219EED37100B525D0 /* MonumentTableViewController.swift */,
 				6B15D2CA19D46A60005C636C /* LocationViewController.swift */,
+				6BEBCDFC19DCE96A00F02ABB /* AddInfoViewController.swift */,
+				6B91C1A419D30F88001C4843 /* Main.storyboard */,
 				6B91C1A719D30F88001C4843 /* Images.xcassets */,
 				6B91C1A919D30F88001C4843 /* LaunchScreen.xib */,
 				6BEBCDFB19DCE89400F02ABB /* DataModel */,
 				6B91C19B19D30F88001C4843 /* Supporting Files */,
-				6B11CF8C19ECED3C00B525D0 /* MonumentTypeTableViewController.swift */,
-				6B11CF8E19ECED7500B525D0 /* ViewController2.swift */,
 			);
 			path = ContributorAppOfficial;
 			sourceTree = "<group>";
@@ -257,14 +257,14 @@
 			files = (
 				6BEBCDFF19DCED3D00F02ABB /* ImagePickerViewController.swift in Sources */,
 				6B11CF8519ECB1FD00B525D0 /* Item.swift in Sources */,
+				6B11CF9319EED37100B525D0 /* MonumentTableViewController.swift in Sources */,
 				6B11CF8319ECB1FD00B525D0 /* Image.swift in Sources */,
-				6B91C1A319D30F88001C4843 /* ViewController.swift in Sources */,
-				6B11CF8F19ECED7500B525D0 /* ViewController2.swift in Sources */,
+				6B91C1A319D30F88001C4843 /* ConstructionViewController.swift in Sources */,
+				6B11CF8F19ECED7500B525D0 /* MonumentViewController.swift in Sources */,
 				6B91C1A119D30F88001C4843 /* ContributorAppOfficial.xcdatamodeld in Sources */,
 				6B11CF8119ECAC1400B525D0 /* ConstructionTableViewController.swift in Sources */,
 				6B91C19E19D30F88001C4843 /* AppDelegate.swift in Sources */,
 				6B15D2CB19D46A60005C636C /* LocationViewController.swift in Sources */,
-				6B11CF8D19ECED3C00B525D0 /* MonumentTypeTableViewController.swift in Sources */,
 				6BEBCDFD19DCE96A00F02ABB /* AddInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

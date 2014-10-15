@@ -24,7 +24,7 @@
         <!--ConstructionViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="ConstructionViewController" customClass="ViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="ConstructionViewController" customClass="ConstructionViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -224,7 +224,7 @@
         <!--MonumentTypeViewController-->
         <scene sceneID="xR3-0m-H3R">
             <objects>
-                <viewController id="kgK-6A-3cJ" userLabel="MonumentTypeViewController" customClass="ViewController2" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kgK-6A-3cJ" userLabel="MonumentTypeViewController" customClass="MonumentViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ddZ-a0-3c5"/>
                         <viewControllerLayoutGuide type="bottom" id="7yJ-RP-6tt"/>
@@ -282,7 +282,7 @@
         <!--MonumentTypeTableViewController-->
         <scene sceneID="rsG-f7-sVA">
             <objects>
-                <tableViewController id="RwJ-CF-oNJ" userLabel="MonumentTypeTableViewController" sceneMemberID="viewController">
+                <tableViewController id="RwJ-CF-oNJ" userLabel="MonumentTypeTableViewController" customClass="MonumentTableViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YQK-mh-qzY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="131"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -882,6 +882,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Dxg-S2-OaF"/>
+        <segue reference="rgD-Tm-hVN"/>
     </inferredMetricsTieBreakers>
 </document>

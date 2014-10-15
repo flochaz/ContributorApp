@@ -12,6 +12,7 @@ import CoreData
 
 class LocationViewController: UIViewController, MKMapViewDelegate {
     
+    var itemIndetifier:String!
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,25 +21,13 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
         var latitudeDelta:CLLocationDegrees = 0.01
         var longitudeDelta:CLLocationDegrees = 0.01
         
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
-        
-        var request = NSFetchRequest(entityName: "Image")
-        request.returnsObjectsAsFaults = false;
-        
-        var results: NSArray = context.executeFetchRequest(request,error: nil)!
-        if (results.count > 0){
-            for result in results{
-                let singleImage:Image = result as Image
-                println("getting back longitude and latitude")
-                println(singleImage.latitude)
-                println(singleImage.longitude)
-                latitude = singleImage.latitude
-                longitude = singleImage.longitude
+        if(!itemIndetifier.isEmpty){
+        var item:Item = getItem(itemIndetifier)
+            var image:Image = item.image.anyObject() as Image
+            if(image.latitude != 0 && image.longitude != 0){
+            latitude = image.latitude
+            longitude = image.longitude
             }
-        }
-        else{
-            println("No image found in DB!")
         }
    
         var span:MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
@@ -57,6 +46,27 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func getItem(itemId:String) -> Item {
+        var item:Item!
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        var request = NSFetchRequest(entityName: "Item")
+        request.returnsObjectsAsFaults = false;
+        println("search for item with identifier " + itemId)
+        //request.predicate = NSPredicate(format: "identifier = %@",itemId)
+        var results: NSArray = context.executeFetchRequest(request,error: nil)!
+        if (results.count > 0){
+            for result in results{
+                item = result as Item
+                println("FOUND THE ITEM")
+            }
+        }
+        else{
+            println("No item with id " + itemIndetifier + " found in DB!")
+        }
+        return item
+    }
+
 }
 
