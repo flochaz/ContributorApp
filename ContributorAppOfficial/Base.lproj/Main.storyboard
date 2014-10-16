@@ -393,15 +393,6 @@
                                     <rect key="frame" x="40" y="78" width="240" height="38"/>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MO1-ud-oRq">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="136" y="156" width="48" height="30"/>
-                                </variation>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-bf-tPB">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -433,7 +424,6 @@
                             <mask key="subviews">
                                 <exclude reference="LV7-nq-Xah"/>
                                 <exclude reference="r8O-WU-XBY"/>
-                                <exclude reference="MO1-ud-oRq"/>
                                 <exclude reference="aF1-bf-tPB"/>
                                 <exclude reference="L6W-y3-hGR"/>
                                 <exclude reference="C6Q-qG-cfK"/>
@@ -443,7 +433,6 @@
                             <mask key="subviews">
                                 <include reference="LV7-nq-Xah"/>
                                 <include reference="r8O-WU-XBY"/>
-                                <include reference="MO1-ud-oRq"/>
                                 <include reference="aF1-bf-tPB"/>
                                 <include reference="L6W-y3-hGR"/>
                                 <include reference="C6Q-qG-cfK"/>
@@ -455,6 +444,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapView" destination="aF1-bf-tPB" id="ZCm-Gv-bfC"/>
+                        <outlet property="searchBar" destination="C6Q-qG-cfK" id="HVd-nA-RzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCL-rO-PHP" userLabel="First Responder" sceneMemberID="firstResponder"/>

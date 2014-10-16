@@ -10,12 +10,16 @@ import UIKit
 import MapKit
 import CoreData
 
-class LocationViewController: UIViewController, MKMapViewDelegate {
+class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     var itemIndetifier:String!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mapView.delegate = self
+        self.searchBar.delegate = self
+        
         var latitude:CLLocationDegrees = 48.399193
         var longitude:CLLocationDegrees = 9.993341
         var latitudeDelta:CLLocationDegrees = 0.01
@@ -66,6 +70,19 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
             println("No item with id " + itemIndetifier + " found in DB!")
         }
         return item
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+        println("searchBarBUttonCLicked Called !")
+        var geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(self.searchBar.text,  {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                println("Place Mark Found")
+                self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
+                
+            }
+        })
     }
 
 }
