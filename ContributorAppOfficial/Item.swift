@@ -17,5 +17,6 @@ class Item: NSManagedObject {
     @NSManaged var location: String
     @NSManaged var name: String
     @NSManaged var image: NSSet
-
+    @NSManaged var latitude: Double
+    @NSManaged var longitude: Double
 }

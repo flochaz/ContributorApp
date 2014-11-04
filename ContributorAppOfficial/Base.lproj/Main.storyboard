@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PJz-kE-0RF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PJz-kE-0RF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -101,43 +101,31 @@
                                     <rect key="frame" x="37" y="89" width="240" height="275"/>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8V-7k-4Es">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="137" y="432" width="34" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="saveImage:" destination="eC9-7n-Sj2" eventType="touchUpInside" id="MzM-7g-iPV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="IiK-Ed-LZa"/>
                                 <exclude reference="sEx-lU-hvD"/>
-                                <exclude reference="q8V-7k-4Es"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="IiK-Ed-LZa"/>
                                 <include reference="sEx-lU-hvD"/>
-                                <include reference="q8V-7k-4Es"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Image Picker" id="GOy-yk-E2J">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="wbd-sV-JQR">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="wbd-sV-JQR">
                             <connections>
-                                <segue destination="vXZ-lx-hvc" kind="show" id="RYx-KV-gg9"/>
+                                <action selector="saveImage:" destination="eC9-7n-Sj2" id="6H5-mc-0tZ"/>
+                                <segue destination="vXZ-lx-hvc" kind="show" id="Ru5-Hv-EDe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="DoneButton" destination="wbd-sV-JQR" id="cLY-op-gjv"/>
                         <outlet property="chooseButton" destination="IiK-Ed-LZa" id="54z-Ap-Uwn"/>
                         <outlet property="imageView" destination="sEx-lU-hvD" id="5jZ-gq-OeC"/>
                     </connections>

@@ -14,12 +14,12 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var chooseButton: UIButton!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    var pickedImage: UIImage!
-    var imageInfo: NSDictionary!
+    var pickedImage: UIImage?
+    var imageInfo: NSDictionary?
     var assetLib = ALAssetsLibrary()
-    var url: NSURL = NSURL()
-    var  location: CLLocation!
+    var imageUrl: NSURL?
     var item:Item!
 
     override func viewDidLoad() {
@@ -38,62 +38,19 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
         
-        url = info.objectForKey(UIImagePickerControllerReferenceURL) as NSURL
-        assetLib.assetForURL(url, resultBlock: {
-            (asset: ALAsset!) in
-            if asset != nil {
-                var assetRep: ALAssetRepresentation = asset.defaultRepresentation()
-                var iref = assetRep.fullResolutionImage().takeUnretainedValue()
-                var image =  UIImage(CGImage: iref)
-                if(asset.valueForProperty(ALAssetPropertyLocation) != nil){
-                self.location = asset.valueForProperty(ALAssetPropertyLocation) as CLLocation
-                println("Image Location")
-                println(self.location)
-                }else
-                {
-                    println("Image with no location")
-                }
-                
-            }
-            }, failureBlock: {
-                (error: NSError!) in
-                
-                NSLog("Error!")
-            }
-        )
-
-        pickedImage = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        imageUrl = info.objectForKey(UIImagePickerControllerReferenceURL) as NSURL?
+        
+        
+        pickedImage = info.objectForKey(UIImagePickerControllerOriginalImage) as? UIImage
         imageInfo = info
         imageView.image = pickedImage
-        
+        doneButton.enabled = true
         picker.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
     // Refactoring the code to get location seems to not be working so keeping it inside the image picker for the moment : need investigation
-    func  getPhotoLocationCoordinateFromUrl(url: NSURL) -> CLLocationCoordinate2D! {
         
-        var coordinate: CLLocationCoordinate2D!
-        assetLib.assetForURL(url, resultBlock: {
-            (asset: ALAsset!) in
-            if asset != nil {
-                var assetRep: ALAssetRepresentation = asset.defaultRepresentation()
-                var iref = assetRep.fullResolutionImage().takeUnretainedValue()
-                var image =  UIImage(CGImage: iref)
-                coordinate = (asset.valueForProperty(ALAssetPropertyLocation) as CLLocation).coordinate
-                println("Image Location")
-                println(coordinate)
-                
-            }
-            }, failureBlock: {
-                (error: NSError!) in
-                
-                NSLog("Error!")
-            }
-        )
-        return coordinate
-    }
-    
     func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -105,20 +62,27 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         
         item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as Item
-        item.identifier = NSUUID.UUID().UUIDString
+        item.identifier = NSUUID().UUIDString
         println("item identifier : " + item.identifier)
-        var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
         
+        
+        var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
+        if let url:NSURL = self.imageUrl {
         image.url =  url.absoluteString!
         image.imageData = UIImagePNGRepresentation(pickedImage)
-        if (location != nil) {
+            if let location:CLLocation = ImageManagementHelper.getPhotoLocationCoordinateFromUrl(url) {
             image.latitude = location.coordinate.latitude
             image.longitude = location.coordinate.longitude
+            // Set default (not accurate) item location
+            item.latitude = location.coordinate.latitude
+            item.longitude = location.coordinate.longitude
         }
         image.item = item
+        }
         
         context.save(nil)
         println("Entry Saved")
+        
     }
 
     
@@ -134,7 +98,9 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        saveImage(self);
         var svc = segue.destinationViewController as ConstructionViewController;
+        
         if(!item.identifier.isEmpty){
         svc.itemIndetifier = item.identifier
         }else{

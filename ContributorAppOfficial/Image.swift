@@ -14,8 +14,8 @@ import CoreData
 class Image: NSManagedObject {
 
     @NSManaged var imageData: NSData
-    @NSManaged var latitude: NSNumber
-    @NSManaged var longitude: NSNumber
+    @NSManaged var latitude: Double
+    @NSManaged var longitude: Double
     @NSManaged var name: String
     @NSManaged var url: String
     @NSManaged var item: Item
