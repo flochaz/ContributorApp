@@ -13,8 +13,10 @@ import CoreData
 class Item: NSManagedObject {
 
     @NSManaged var desc: String
+    @NSManaged var address: String
+    @NSManaged var constructionType: String
+    @NSManaged var subConstructionType: String
     @NSManaged var identifier: String
-    @NSManaged var location: String
     @NSManaged var name: String
     @NSManaged var image: NSSet
     @NSManaged var latitude: Double

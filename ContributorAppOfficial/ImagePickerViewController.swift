@@ -5,10 +5,8 @@
 //  Created by florian chazal on 10/1/14.
 //  Copyright (c) 2014 florian chazal. All rights reserved.
 //
-import CoreData
 import UIKit
-import AssetsLibrary
-import CoreLocation
+
 
 class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
@@ -18,9 +16,8 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     
     var pickedImage: UIImage?
     var imageInfo: NSDictionary?
-    var assetLib = ALAssetsLibrary()
     var imageUrl: NSURL?
-    var item:Item!
+    var itemIdentifier:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,33 +53,9 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     
-    @IBAction func saveImage(sender: AnyObject) {
+    func initiateItemWithImage(sender: AnyObject) {
         println("Save Image")
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
-        
-        item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as Item
-        item.identifier = NSUUID().UUIDString
-        println("item identifier : " + item.identifier)
-        
-        
-        var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
-        if let url:NSURL = self.imageUrl {
-        image.url =  url.absoluteString!
-        image.imageData = UIImagePNGRepresentation(pickedImage)
-            if let location:CLLocation = ImageManagementHelper.getPhotoLocationCoordinateFromUrl(url) {
-            image.latitude = location.coordinate.latitude
-            image.longitude = location.coordinate.longitude
-            // Set default (not accurate) item location
-            item.latitude = location.coordinate.latitude
-            item.longitude = location.coordinate.longitude
-        }
-        image.item = item
-        }
-        
-        context.save(nil)
-        println("Entry Saved")
-        
+     itemIdentifier = SwiftCoreDataHelper.createItem(imageUrl)
     }
 
     
@@ -92,19 +65,17 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-
- 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        saveImage(self);
+        initiateItemWithImage(self);
         var svc = segue.destinationViewController as ConstructionViewController;
         
-        if(!item.identifier.isEmpty){
-        svc.itemIndetifier = item.identifier
+        if(!itemIdentifier.isEmpty){
+        svc.itemIdentifier = itemIdentifier
         }else{
-                    svc.itemIndetifier = "NO IDENTIFIER"
+                    svc.itemIdentifier = "NO IDENTIFIER"
         }
 
         // Get the new view controller using segue.destinationViewController.

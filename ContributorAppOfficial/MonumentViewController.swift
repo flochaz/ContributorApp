@@ -10,12 +10,12 @@ import UIKit
 
 class MonumentViewController: UIViewController {
 
-    var itemIndetifier:String!
+    var itemIdentifier:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(!itemIndetifier.isEmpty){
-            println("From ViewController Test variable transfer : " + itemIndetifier)
+        if(!itemIdentifier.isEmpty){
+            println("From ViewController Test variable transfer : " + itemIdentifier)
         }else{
             println("From ViewController  test variable Not setted")
         }
@@ -30,7 +30,7 @@ class MonumentViewController: UIViewController {
         if segue.destinationViewController is MonumentTableViewController{
             var svc = segue.destinationViewController as MonumentTableViewController;
             
-            svc.itemIndetifier = itemIndetifier
+            svc.itemIdentifier = itemIdentifier
         }
     }
 

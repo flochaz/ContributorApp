@@ -7,33 +7,25 @@
 //
 
 import UIKit
-import CoreData
 
 class ConstructionTableViewController: UITableViewController {
 
-    var itemIndetifier:String!
-    var item:Item!
-   // var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-   // var context:NSManagedObjectContext!
+    let ConstructionTypes =  ["Monument", "Edifice", "Landscape"]
+    
+    var itemIdentifier:String!
     var tableData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableData.append("Monument");
-        self.tableData.append("Edifice");
-        self.tableData.append("Landscape");
-
+        for constructionType in ConstructionTypes{
+        self.tableData.append(constructionType);
+        }
         
-        if(!itemIndetifier.isEmpty){
-        println("From table view Test variable transfer : " + itemIndetifier)
+        if(!itemIdentifier.isEmpty){
+        println("From table view Test variable transfer : " + itemIdentifier)
         }else{
             println("From table  test variable Not setted")
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,55 +35,41 @@ class ConstructionTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Item selected", message: "You selected item \(indexPath.row) with value \(tableData[indexPath.row])", preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "OK",
             style: UIAlertActionStyle.Default,
             handler: {
                 (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
         }))
-        self.item = getItem(self.itemIndetifier)
-        var constructionType:NSString =  tableData[indexPath.row]
-        addConstructionTypeToItem(item, constructionType: constructionType)
+        var item = SwiftCoreDataHelper.getItemFromIdentifier(self.itemIdentifier)
+        var constructionType:String =  tableData[indexPath.row]
+        SwiftCoreDataHelper.addConstructionTypeToItem(item, constructionType: constructionType)
+        if(constructionType == "Lanscape"){
+            var subConstructionType = "Lanscape"
+            SwiftCoreDataHelper.addSubConstructionTypeToItem(item, subConstructionType: subConstructionType)
+        }
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
-    func addConstructionTypeToItem(item: Item, constructionType: NSString){
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
-        item.desc = constructionType
-        context.save(nil)
-    }
-    
-    func getItem(itemId:String) -> Item {
-        var item:Item!
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         
-        var request = NSFetchRequest(entityName: "Item")
-        request.returnsObjectsAsFaults = false;
-        println("search for item with identifier " + itemId)
-        //request.predicate = NSPredicate(format: "identifier = %@",itemId)
-        var results: NSArray = context.executeFetchRequest(request,error: nil)!
-        if (results.count > 0){
-            for result in results{
-                item = result as Item
-                println("FOUND THE ITEM")
-            }
+       override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if let segueIdentifier =  segue.identifier{
+            switch segueIdentifier{
+            case "toMonument":
+                var svc = segue.destinationViewController as MonumentViewController;
+                svc.itemIdentifier = itemIdentifier
+            case "toLocation":
+                var svc = segue.destinationViewController as LocationViewController;
+                svc.itemIdentifier = itemIdentifier
+            case "toEdifice":
+                var svc = segue.destinationViewController as EdificeViewController;
+                svc.itemIdentifier = itemIdentifier
+            default:
+                var svc = segue.destinationViewController as LocationViewController;
+                svc.itemIdentifier = itemIdentifier
         }
-        else{
-            println("No item with id " + itemIndetifier + " found in DB!")
         }
-        return item
-    }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var svc = segue.destinationViewController as MonumentViewController;
-        if(!itemIndetifier.isEmpty){
-            svc.itemIndetifier = itemIndetifier
-        }else{
-            svc.itemIndetifier = "NO IDENTIFIER"
-        }
-        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

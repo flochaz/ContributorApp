@@ -8,11 +8,10 @@
 
 import UIKit
 import MapKit
-import CoreData
 
 class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
-    var itemIndetifier:String!
+    var itemIdentifier:String!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
@@ -25,8 +24,8 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
         var latitudeDelta:CLLocationDegrees = 0.01
         var longitudeDelta:CLLocationDegrees = 0.01
         
-        if(!itemIndetifier.isEmpty){
-        var item:Item = getItem(itemIndetifier)
+        if(!itemIdentifier.isEmpty){
+        var item:Item = SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)
             var image:Image = item.image.anyObject() as Image
             if(image.latitude != 0 && image.longitude != 0){
             latitude = image.latitude
@@ -50,27 +49,6 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
         // Dispose of any resources that can be recreated.
     }
     
-    func getItem(itemId:String) -> Item {
-        var item:Item!
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
-        
-        var request = NSFetchRequest(entityName: "Item")
-        request.returnsObjectsAsFaults = false;
-        println("search for item with identifier " + itemId)
-        //request.predicate = NSPredicate(format: "identifier = %@",itemId)
-        var results: NSArray = context.executeFetchRequest(request,error: nil)!
-        if (results.count > 0){
-            for result in results{
-                item = result as Item
-                println("FOUND THE ITEM")
-            }
-        }
-        else{
-            println("No item with id " + itemIndetifier + " found in DB!")
-        }
-        return item
-    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()

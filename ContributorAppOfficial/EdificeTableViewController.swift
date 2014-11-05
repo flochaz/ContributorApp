@@ -8,25 +8,23 @@
 
 import UIKit
 
-class MonumentTableViewController: UITableViewController {
+class EdificeTableViewController: UITableViewController {
     
-    let SubConstructionTypes =  ["Historical", "Mueseum", "Statue"]
+    let SubConstructionTypes =  ["Private", "Public", "Ephemeral"]
     
     var itemIdentifier:String!
     var tableData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         for subConstructionType in SubConstructionTypes{
             self.tableData.append(subConstructionType);
-            
         }
         
         if(!itemIdentifier.isEmpty){
-            println("From MonumentTableViewController Test variable transfer : " + itemIdentifier)
+            println("From EdificeTableViewController Test variable transfer : " + itemIdentifier)
         }else{
-            println("From MonumentTableViewController test variable Not setted")
+            println("From EdificeTableViewController  test variable Not setted")
         }
     }
     

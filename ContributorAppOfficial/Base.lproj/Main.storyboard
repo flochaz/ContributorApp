@@ -159,7 +159,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="kgK-6A-3cJ" kind="show" id="bzn-je-Xn0"/>
+                                            <segue destination="kgK-6A-3cJ" kind="show" identifier="toMonument" id="bzn-je-Xn0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3G7-Je-ohL" style="IBUITableViewCellStyleDefault" id="nRD-p2-H4X">
@@ -176,7 +176,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="G8t-x4-Lrj" kind="show" id="svn-OA-adD"/>
+                                            <segue destination="G8t-x4-Lrj" kind="show" identifier="toEdifice" id="svn-OA-adD"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="yYv-hd-GU4" style="IBUITableViewCellStyleDefault" id="rGr-tr-wH7">
@@ -193,7 +193,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="B7N-RM-aNJ" kind="show" id="Dxg-S2-OaF"/>
+                                            <segue destination="B7N-RM-aNJ" kind="show" identifier="toLocation" id="Dxg-S2-OaF"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -212,7 +212,7 @@
         <!--MonumentTypeViewController-->
         <scene sceneID="xR3-0m-H3R">
             <objects>
-                <viewController id="kgK-6A-3cJ" userLabel="MonumentTypeViewController" customClass="MonumentViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonumentView" id="kgK-6A-3cJ" userLabel="MonumentTypeViewController" customClass="MonumentViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ddZ-a0-3c5"/>
                         <viewControllerLayoutGuide type="bottom" id="7yJ-RP-6tt"/>
@@ -345,7 +345,7 @@
         <!--LocationViewController-->
         <scene sceneID="She-MO-1J4">
             <objects>
-                <viewController id="B7N-RM-aNJ" userLabel="LocationViewController" customClass="LocationViewController" customModule="ContributorAppOfficial" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationView" id="B7N-RM-aNJ" userLabel="LocationViewController" customClass="LocationViewController" customModule="ContributorAppOfficial" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rIi-s7-Qgk"/>
                         <viewControllerLayoutGuide type="bottom" id="DA0-Bt-Dlc"/>
@@ -728,7 +728,7 @@
         <!--EdificeTypeViewController-->
         <scene sceneID="9C0-hp-8V2">
             <objects>
-                <viewController id="G8t-x4-Lrj" userLabel="EdificeTypeViewController" customClass="ViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EdificeView" id="G8t-x4-Lrj" userLabel="EdificeTypeViewController" customClass="EdificeViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eKl-0l-MTk"/>
                         <viewControllerLayoutGuide type="bottom" id="4R7-r2-Mkg"/>
@@ -786,7 +786,7 @@
         <!--EdificeTypeTableViewController-->
         <scene sceneID="6gY-oU-nYM">
             <objects>
-                <tableViewController id="Hq5-yp-27o" userLabel="EdificeTypeTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Hq5-yp-27o" userLabel="EdificeTypeTableViewController" customClass="EdificeTableViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="li8-aB-YXd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -860,6 +860,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rgD-Tm-hVN"/>
+        <segue reference="x9b-A7-OLd"/>
     </inferredMetricsTieBreakers>
 </document>
