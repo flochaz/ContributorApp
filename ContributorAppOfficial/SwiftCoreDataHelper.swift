@@ -77,4 +77,27 @@ class SwiftCoreDataHelper: NSObject {
         item.subConstructionType = subConstructionType
         context.save(nil)
     }
+    
+    class func addLocationToItem(item:Item, latitude:Double, longitude:Double){
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        item.latitude = latitude
+        item.longitude = longitude
+        context.save(nil)
+    }
+    
+    
+    class func updateItemDescription(item:Item, itemName:String, itemBuilder:String, itemStartBuildDate:NSDate, itemEndBuildDate:NSDate, itemWhyBuild:String){
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        item.name = itemName
+        item.builder = itemBuilder
+        item.startBuildDate = itemStartBuildDate
+        item.endBuildDate = itemEndBuildDate
+        item.whyBuild = itemWhyBuild
+        context.save(nil)
+        
+    }
+    
+
 }

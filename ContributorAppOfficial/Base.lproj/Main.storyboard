@@ -387,18 +387,6 @@
                                     <rect key="frame" x="40" y="262" width="240" height="252"/>
                                 </variation>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6W-y3-hGR">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="136" y="216" width="32" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="PPH-rk-fTX" kind="show" id="tNb-gz-bgZ"/>
-                                </connections>
-                            </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="C6Q-qG-cfK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -406,6 +394,18 @@
                                     <rect key="frame" x="68" y="107" width="184" height="44"/>
                                 </variation>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-1P-glw">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="137" y="185" width="37" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="PPH-rk-fTX" kind="show" id="U93-oR-cVj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -413,8 +413,8 @@
                                 <exclude reference="LV7-nq-Xah"/>
                                 <exclude reference="r8O-WU-XBY"/>
                                 <exclude reference="aF1-bf-tPB"/>
-                                <exclude reference="L6W-y3-hGR"/>
                                 <exclude reference="C6Q-qG-cfK"/>
+                                <exclude reference="Xtl-1P-glw"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -422,13 +422,13 @@
                                 <include reference="LV7-nq-Xah"/>
                                 <include reference="r8O-WU-XBY"/>
                                 <include reference="aF1-bf-tPB"/>
-                                <include reference="L6W-y3-hGR"/>
                                 <include reference="C6Q-qG-cfK"/>
+                                <include reference="Xtl-1P-glw"/>
                             </mask>
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapView" destination="aF1-bf-tPB" id="ZCm-Gv-bfC"/>
@@ -442,7 +442,7 @@
         <!--MoreInfoViewController-->
         <scene sceneID="aoF-UD-orU">
             <objects>
-                <viewController id="PPH-rk-fTX" userLabel="MoreInfoViewController" customClass="AddInfoViewController" customModule="ContributorAppOfficial" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoreInfo" id="PPH-rk-fTX" userLabel="MoreInfoViewController" customClass="AddInfoViewController" customModule="ContributorAppOfficial" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l9w-Lo-azM"/>
                         <viewControllerLayoutGuide type="bottom" id="Z5S-LM-fWd"/>
@@ -475,7 +475,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="38" y="49" width="242" height="34"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT'S THAT ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIu-oj-ssI">
@@ -502,7 +502,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="144" y="486" width="32" height="30"/>
+                                    <rect key="frame" x="142" y="518" width="32" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="FaF-6t-k31" kind="show" id="pRZ-O6-w9d"/>
@@ -534,14 +534,6 @@
                                     <rect key="frame" x="129" y="254" width="63" height="26"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-gn-whJ">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="39" y="288" width="242" height="30"/>
-                                </variation>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zmg-Aq-7sp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -550,16 +542,35 @@
                                 <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <rect key="frame" x="40" y="358" width="240" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 </variation>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVK-k1-a6m">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gdK-UV-MHm">
+                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="436915196.99154699">
+                                    <!--2014-11-05 21:19:56 +0000-->
+                                </date>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="1" y="254" width="320" height="162"/>
+                                </variation>
+                            </datePicker>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teB-8j-bur">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="444" width="240" height="66"/>
+                                </variation>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKF-Kd-5rx">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="133" y="324" width="55" height="26"/>
+                                    <rect key="frame" x="134" y="415" width="49" height="21"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -575,9 +586,10 @@
                                 <exclude reference="7lf-G2-cwj"/>
                                 <exclude reference="7rk-vV-Tmf"/>
                                 <exclude reference="euD-ng-BNT"/>
-                                <exclude reference="AdU-gn-whJ"/>
                                 <exclude reference="zmg-Aq-7sp"/>
-                                <exclude reference="iVK-k1-a6m"/>
+                                <exclude reference="gdK-UV-MHm"/>
+                                <exclude reference="teB-8j-bur"/>
+                                <exclude reference="RKF-Kd-5rx"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -591,18 +603,20 @@
                                 <include reference="7lf-G2-cwj"/>
                                 <include reference="7rk-vV-Tmf"/>
                                 <include reference="euD-ng-BNT"/>
-                                <include reference="AdU-gn-whJ"/>
                                 <include reference="zmg-Aq-7sp"/>
-                                <include reference="iVK-k1-a6m"/>
+                                <include reference="gdK-UV-MHm"/>
+                                <include reference="teB-8j-bur"/>
+                                <include reference="RKF-Kd-5rx"/>
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="buidDateTextField" destination="AdU-gn-whJ" id="qVe-uq-Tsd"/>
+                        <outlet property="buildDate" destination="gdK-UV-MHm" id="iJg-qi-B6i"/>
                         <outlet property="builderTextField" destination="7rk-vV-Tmf" id="cNH-NN-jFz"/>
                         <outlet property="nameTextField" destination="zsx-DH-4FQ" id="WMT-2s-1Q9"/>
-                        <outlet property="whyTextField" destination="zmg-Aq-7sp" id="fXP-w4-ffP"/>
+                        <outlet property="whyTextField" destination="teB-8j-bur" id="g1Y-AG-mrr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yT6-tO-iJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,7 +626,7 @@
         <!--SummaryViewController-->
         <scene sceneID="KBe-Bx-gVl">
             <objects>
-                <viewController id="FaF-6t-k31" userLabel="SummaryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemSummary" id="FaF-6t-k31" userLabel="SummaryViewController" customClass="ItemSummaryViewController" customModule="ContributorAppOfficial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vxo-ag-GhZ"/>
                         <viewControllerLayoutGuide type="bottom" id="PMA-N0-aWT"/>

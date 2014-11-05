@@ -8,15 +8,20 @@
 
 import UIKit
 
-class AddInfoViewController: UIViewController {
+class AddInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var builderTextField: UITextField!
-    @IBOutlet weak var buidDateTextField: UITextField!
+    @IBOutlet weak var buildDate: UIDatePicker!
     @IBOutlet weak var whyTextField: UITextView!
+    var itemIdentifier:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameTextField.delegate = self
+        builderTextField.delegate = self
+        //buildDate.delegate = self
+        whyTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -24,16 +29,32 @@ class AddInfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+    
+    func textViewShouldReturn(textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    /**
+    * Called when the user click on the view (outside the UITextField).
     */
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        SwiftCoreDataHelper.updateItemDescription(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier), itemName:nameTextField.text, itemBuilder:builderTextField.text, itemStartBuildDate:buildDate.date, itemEndBuildDate:buildDate.date, itemWhyBuild:whyTextField.text)
+        if segue.destinationViewController is ItemSummaryViewController{
+            var svc = segue.destinationViewController as ItemSummaryViewController;
+            
+            svc.itemIdentifier = itemIdentifier
+        }
+    }
+
 
 }

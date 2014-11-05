@@ -16,34 +16,14 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     var manager: OneShotLocationManager?
+    var itemLocation:CLLocationCoordinate2D!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
         self.searchBar.delegate = self
         
-        println("LOCATION from Default")
-        var latitude:CLLocationDegrees = 48.399193
-        var longitude:CLLocationDegrees = 9.993341
-        var latitudeDelta:CLLocationDegrees = 0.01
-        var longitudeDelta:CLLocationDegrees = 0.01
-        
-        
-        if(!itemIdentifier.isEmpty){
-        var item:Item = SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)
-            var image:Image = item.image.anyObject() as Image
-            if(image.latitude != 0 && image.longitude != 0){
-                println("LOCATION from Image")
-            latitude = image.latitude
-            longitude = image.longitude
-            }
-        }
-   
-        var span:MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
-        println("LOCATION INITIATE \(latitude) , \(longitude)")
-        var initialLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        var initialRegion:MKCoordinateRegion = MKCoordinateRegionMake(initialLocation, span)
-        self.mapView.setRegion(initialRegion, animated: true)
+
         let longPress = UILongPressGestureRecognizer(target: self, action: "action:")
         longPress.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPress)
@@ -80,17 +60,16 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
         // Dispose of any resources that can be recreated.
     }
     
-    
     func action(gestureRecognizer:UIGestureRecognizer) {
         var touchPoint = gestureRecognizer.locationInView(self.mapView)
         var newCoord:CLLocationCoordinate2D = mapView.convertPoint(touchPoint, toCoordinateFromView: self.mapView)
-        
+        mapView.removeAnnotations(mapView.annotations)
         var newAnotation = MKPointAnnotation()
         newAnotation.coordinate = newCoord
-        newAnotation.title = "New Location"
+        newAnotation.title = "Your long press pin"
         newAnotation.subtitle = "New Subtitle"
         mapView.addAnnotation(newAnotation)
-        
+        itemLocation = newCoord
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -104,6 +83,18 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
                 
             }
         })
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if let iloc = itemLocation{
+            SwiftCoreDataHelper.addLocationToItem(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier), latitude:itemLocation.latitude, longitude:itemLocation.longitude)
+        }
+        if segue.destinationViewController is AddInfoViewController{
+            var svc = segue.destinationViewController as AddInfoViewController;
+            
+            svc.itemIdentifier = itemIdentifier
+        }
     }
 
 }

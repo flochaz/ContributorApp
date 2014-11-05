@@ -10,17 +10,21 @@
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="builder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="constructionType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endBuildDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startBuildDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="subConstructionType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="whyBuild" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="image" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="item" inverseEntity="Image" syncable="YES"/>
     </entity>
     <elements>
         <element name="Image" positionX="-36" positionY="27" width="128" height="135"/>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="238"/>
     </elements>
 </model>
