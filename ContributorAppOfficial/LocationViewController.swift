@@ -88,7 +88,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if let iloc = itemLocation{
-            SwiftCoreDataHelper.addLocationToItem(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier), latitude:itemLocation.latitude, longitude:itemLocation.longitude)
+            SwiftCoreDataHelper.addLocationToItem(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)!, latitude:itemLocation.latitude, longitude:itemLocation.longitude)
         }
         if segue.destinationViewController is AddInfoViewController{
             var svc = segue.destinationViewController as AddInfoViewController;

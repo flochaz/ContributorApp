@@ -55,7 +55,7 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     
     func initiateItemWithImage(sender: AnyObject) {
         println("Save Image")
-     itemIdentifier = SwiftCoreDataHelper.createItem(imageUrl)
+     itemIdentifier = SwiftCoreDataHelper.createItem(imageUrl, image: pickedImage)
     }
 
     

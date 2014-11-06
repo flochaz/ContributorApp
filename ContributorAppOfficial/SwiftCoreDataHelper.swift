@@ -12,7 +12,7 @@ import CoreData
 
 class SwiftCoreDataHelper: NSObject {
 
-    class func createItem(imageUrl: NSURL?) ->  String {
+    class func createItem(imageUrl: NSURL?, image:UIImage?) ->  String {
     var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
     var context:NSManagedObjectContext = appDelegate.managedObjectContext!
     var item:Item!
@@ -22,8 +22,9 @@ class SwiftCoreDataHelper: NSObject {
     println("item identifier : " + item.identifier)
     
     if let url:NSURL = imageUrl {
+        if let img = image{
     var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
-    
+        image.imageData = UIImagePNGRepresentation(img)
         image.url =  url.absoluteString!
         //TODO : figure out if we really need to store the image data
        // image.imageData = UIImagePNGRepresentation(pickedImage)
@@ -35,6 +36,7 @@ class SwiftCoreDataHelper: NSObject {
             item.longitude = location.coordinate.longitude
         }
         image.item = item
+        }
     }
     //TODO: Manage save error
     context.save(nil)
@@ -42,8 +44,8 @@ class SwiftCoreDataHelper: NSObject {
     return item.identifier
     }
     
-    class func getItemFromIdentifier(itemId:String) -> Item {
-        var item:Item!
+    class func getItemFromIdentifier(itemId:String) -> Item? {
+        var item:Item?
         var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         
@@ -96,8 +98,11 @@ class SwiftCoreDataHelper: NSObject {
         item.endBuildDate = itemEndBuildDate
         item.whyBuild = itemWhyBuild
         context.save(nil)
-        
     }
     
+    class func getRandomImageFromItem(item:Item) -> Image?{
+        let image = item.image.anyObject() as Image?
+        return image
+    }
 
 }

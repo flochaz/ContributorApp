@@ -42,12 +42,13 @@ class ConstructionTableViewController: UITableViewController {
             handler: {
                 (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
         }))
-        var item = SwiftCoreDataHelper.getItemFromIdentifier(self.itemIdentifier)
         var constructionType:String =  tableData[indexPath.row]
+        if let item = SwiftCoreDataHelper.getItemFromIdentifier(self.itemIdentifier){
         SwiftCoreDataHelper.addConstructionTypeToItem(item, constructionType: constructionType)
         if(constructionType == "Lanscape"){
             var subConstructionType = "Lanscape"
             SwiftCoreDataHelper.addSubConstructionTypeToItem(item, subConstructionType: subConstructionType)
+        }
         }
         self.presentViewController(alert, animated: true, completion: nil)
         

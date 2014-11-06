@@ -42,9 +42,10 @@ class EdificeTableViewController: UITableViewController {
             handler: {
                 (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
         }))
-        var item:Item = SwiftCoreDataHelper.getItemFromIdentifier(self.itemIdentifier)
         var subConstructionType:String =  tableData[indexPath.row]
+        if let item = SwiftCoreDataHelper.getItemFromIdentifier(self.itemIdentifier){
         SwiftCoreDataHelper.addSubConstructionTypeToItem(item, subConstructionType: subConstructionType)
+        }
         self.presentViewController(alert, animated: true, completion: nil)
         
     }

@@ -48,7 +48,7 @@ class AddInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        SwiftCoreDataHelper.updateItemDescription(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier), itemName:nameTextField.text, itemBuilder:builderTextField.text, itemStartBuildDate:buildDate.date, itemEndBuildDate:buildDate.date, itemWhyBuild:whyTextField.text)
+        SwiftCoreDataHelper.updateItemDescription(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)!, itemName:nameTextField.text, itemBuilder:builderTextField.text, itemStartBuildDate:buildDate.date, itemEndBuildDate:buildDate.date, itemWhyBuild:whyTextField.text)
         if segue.destinationViewController is ItemSummaryViewController{
             var svc = segue.destinationViewController as ItemSummaryViewController;
             

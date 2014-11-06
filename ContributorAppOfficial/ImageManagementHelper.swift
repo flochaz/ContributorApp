@@ -40,5 +40,37 @@ class ImageManagementHelper: NSObject {
         )
         return location
     }
+    
+    class func  getPhotoFromUrl(url: NSURL) -> UIImage? {
+        
+        var image: UIImage?
+        ALAssetsLibrary().assetForURL(url, resultBlock: {
+            (asset: ALAsset!) in
+            if asset != nil {
+                var assetRep: ALAssetRepresentation = asset.defaultRepresentation()
+                var iref = assetRep.fullResolutionImage().takeUnretainedValue()
+                image =  UIImage(CGImage: iref)
+                println("FOUND image from \(url) \(image)")
+            }else{
+                println("IMAGE NOT FOUND")
+            }
+            }, failureBlock: {
+                (error: NSError!) in
+                
+                NSLog("Error!")
+            }
+        )
+        return image
+    }
+    
+    func scaleImageWith(image:UIImage, newSize:CGSize)->UIImage{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 
 }
