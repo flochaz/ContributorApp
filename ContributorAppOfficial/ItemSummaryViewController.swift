@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemSummaryViewController: UIViewController {
+class ItemSummaryViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
         var itemIdentifier:String!
     
@@ -20,7 +20,6 @@ class ItemSummaryViewController: UIViewController {
     
     @IBOutlet weak var builderTextField: UITextField!
 
-    var image:UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +29,10 @@ class ItemSummaryViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("UPDATE IMAGE")
-        
+       
     }
     
-    @IBAction func tryUpdate(sender: AnyObject) {
-        loadData()
-        largeImage.image = image
-    }
+
     func loadData(){
         if let item = SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier){
             builderTextField.text = item.builder
@@ -50,6 +45,44 @@ class ItemSummaryViewController: UIViewController {
         }
 
     }
+    
+    @IBAction func chooseImage(sender: AnyObject) {
+        let imagePicker:UIImagePickerController = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        
+        var imageUrl = info.objectForKey(UIImagePickerControllerReferenceURL) as NSURL?
+        
+        
+        var pickedImage = info.objectForKey(UIImagePickerControllerOriginalImage) as? UIImage
+        var imageInfo = info
+        largeImage.image = pickedImage
+        
+        if let image: Image = SwiftCoreDataHelper.getImageFromIdentifier(SwiftCoreDataHelper.createImage(imageUrl!, imageData: UIImagePNGRepresentation(pickedImage))){
+            SwiftCoreDataHelper.addImageToItem(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)!, image:image)
+            largeImage.image = pickedImage
+        } else{
+            let alert = UIAlertController(title: "Image already assigned", message: "This Image has already been assign to another item, choose another image", preferredStyle: UIAlertControllerStyle.Alert)
+        }
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    // Refactoring the code to get location seems to not be working so keeping it inside the image picker for the moment : need investigation
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

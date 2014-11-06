@@ -55,7 +55,16 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     
     func initiateItemWithImage(sender: AnyObject) {
         println("Save Image")
-     itemIdentifier = SwiftCoreDataHelper.createItem(imageUrl, image: pickedImage)
+        if (itemIdentifier != ""){
+            println("Item already exist")
+            let item = SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)
+        }else{
+            itemIdentifier = SwiftCoreDataHelper.createItem()
+        }
+        if let image: Image = SwiftCoreDataHelper.getImageFromIdentifier(SwiftCoreDataHelper.createImage(imageUrl!, imageData: UIImagePNGRepresentation(pickedImage))){
+            SwiftCoreDataHelper.addImageToItem(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)!, image:image)
+        } 
+
     }
 
     

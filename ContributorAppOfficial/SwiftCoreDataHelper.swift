@@ -11,37 +11,78 @@ import CoreLocation
 import CoreData
 
 class SwiftCoreDataHelper: NSObject {
-
-    class func createItem(imageUrl: NSURL?, image:UIImage?) ->  String {
-    var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-    var context:NSManagedObjectContext = appDelegate.managedObjectContext!
-    var item:Item!
     
-    item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as Item
-    item.identifier = NSUUID().UUIDString
-    println("item identifier : " + item.identifier)
     
-    if let url:NSURL = imageUrl {
-        if let img = image{
-    var  image:Image  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
-        image.imageData = UIImagePNGRepresentation(img)
-        image.url =  url.absoluteString!
-        //TODO : figure out if we really need to store the image data
-       // image.imageData = UIImagePNGRepresentation(pickedImage)
-        if let location:CLLocation = ImageManagementHelper.getPhotoLocationCoordinateFromUrl(url) {
-            image.latitude = location.coordinate.latitude
-            image.longitude = location.coordinate.longitude
-            //INFO: Set default (not accurate) item location
-            item.latitude = location.coordinate.latitude
-            item.longitude = location.coordinate.longitude
+    class func createImage(imageUrl: NSURL, imageData:NSData) -> String{
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        if (!imageAlreadyExist(imageUrl.absoluteString!)){
+            println("create new Image \(imageUrl.absoluteString)")
+            var image:Image = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
+            image.imageData = imageData
+            image.url =  imageUrl.absoluteString!
+            if let location:CLLocation = ImageManagementHelper.getPhotoLocationCoordinateFromUrl(imageUrl) {
+                image.latitude = location.coordinate.latitude
+                image.longitude = location.coordinate.longitude
+            }
+        }else{
+            println("Image already exist")
         }
-        image.item = item
-        }
+        
+        return imageUrl.absoluteString!
     }
-    //TODO: Manage save error
-    context.save(nil)
-    println("Entry Saved")
-    return item.identifier
+    
+    class func imageAlreadyExist(id:String) -> Bool{
+        var imageAlreadyExist:Bool = false
+        if let imageWithId:Image = getImageFromIdentifier(id){
+            imageAlreadyExist = true
+        }
+        return imageAlreadyExist
+    }
+    
+    class func getImageFromIdentifier(imageUrl:String) -> Image?{
+        var image:Image?
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        
+        var request = NSFetchRequest(entityName: "Image")
+        request.returnsObjectsAsFaults = false;
+        request.predicate = NSPredicate(format: "url = %@",imageUrl)
+        var results: NSArray = context.executeFetchRequest(request,error: nil)!
+        if (results.count == 1){
+            image = results[0] as? Image
+        }
+        else{
+            println("Image serch return \(results.count) results")
+        }
+        return image
+    }
+    
+    class func addImageToItem(item:Item, image:Image) {
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        image.item = item
+        //TODO: Manage save error
+        context.save(nil)
+        println("Entry Saved")
+    }
+    
+    
+    
+    class func createItem() ->  String {
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        var item:Item!
+        
+        item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as Item
+        item.identifier = NSUUID().UUIDString
+        println("item identifier : " + item.identifier)
+        //TODO: Manage save error
+        context.save(nil)
+        item.objectID
+        println("Entry Saved")
+        return item.identifier
     }
     
     class func getItemFromIdentifier(itemId:String) -> Item? {
@@ -52,11 +93,11 @@ class SwiftCoreDataHelper: NSObject {
         var request = NSFetchRequest(entityName: "Item")
         request.returnsObjectsAsFaults = false;
         println("search for item with identifier " + itemId)
-        //request.predicate = NSPredicate(format: "identifier = %@",itemId)
+        request.predicate = NSPredicate(format: "identifier = %@",itemId)
         var results: NSArray = context.executeFetchRequest(request,error: nil)!
         if (results.count > 0){
             for result in results{
-                item = result as Item
+                item = result as? Item
                 println("FOUND THE ITEM")
             }
         }
@@ -65,7 +106,8 @@ class SwiftCoreDataHelper: NSObject {
         }
         return item
     }
-
+    
+    
     class func addConstructionTypeToItem(item: Item, constructionType: String){
         var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
@@ -104,5 +146,5 @@ class SwiftCoreDataHelper: NSObject {
         let image = item.image.anyObject() as Image?
         return image
     }
-
+    
 }

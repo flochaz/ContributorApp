@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8RS-lm-4UJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="94"/>
+            <point key="canvasLocation" x="-1485" y="84"/>
         </scene>
         <!--ConstructionViewController-->
         <scene sceneID="ufC-wZ-h7g">
@@ -133,6 +133,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyL-Gl-FNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-441" y="94"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="ox6-Ke-S7c">
+            <objects>
+                <collectionViewController id="718-vJ-Bnl" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2vY-ZS-4rx">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jGJ-er-uNz">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OTU-NN-064">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="718-vJ-Bnl" id="SeJ-Sh-jP2"/>
+                            <outlet property="delegate" destination="718-vJ-Bnl" id="EO6-zA-CWF"/>
+                        </connections>
+                    </collectionView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OwV-4Q-Fm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2230.5" y="84"/>
         </scene>
         <!--ConstructionTableViewController-->
         <scene sceneID="9ha-u6-V4r">
@@ -670,15 +704,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="38" y="398" width="49" height="30"/>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-4Q-WHQ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="More">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="246" y="398" width="36" height="30"/>
-                                </variation>
+                                <connections>
+                                    <action selector="chooseImage:" destination="FaF-6t-k31" eventType="touchUpInside" id="UXL-oU-N4d"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxE-Nd-IdM">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -772,6 +800,18 @@
                                     <rect key="frame" x="222" y="323" width="60" height="80"/>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-4Q-WHQ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="More">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="234" y="398" width="36" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="PPH-rk-fTX" kind="show" id="hzw-d2-cjR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -779,12 +819,12 @@
                                 <exclude reference="dWT-e2-d5J"/>
                                 <exclude reference="zJN-8j-CO4"/>
                                 <exclude reference="MB3-iE-yqN"/>
-                                <exclude reference="IwF-4Q-WHQ"/>
                                 <exclude reference="TxE-Nd-IdM"/>
                                 <exclude reference="Gli-OL-sDC"/>
                                 <exclude reference="d0d-LA-hDm"/>
                                 <exclude reference="YyQ-8P-Bf7"/>
                                 <exclude reference="yBi-Kj-IEE"/>
+                                <exclude reference="IwF-4Q-WHQ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -792,12 +832,12 @@
                                 <include reference="dWT-e2-d5J"/>
                                 <include reference="zJN-8j-CO4"/>
                                 <include reference="MB3-iE-yqN"/>
-                                <include reference="IwF-4Q-WHQ"/>
                                 <include reference="TxE-Nd-IdM"/>
                                 <include reference="Gli-OL-sDC"/>
                                 <include reference="d0d-LA-hDm"/>
                                 <include reference="YyQ-8P-Bf7"/>
                                 <include reference="yBi-Kj-IEE"/>
+                                <include reference="IwF-4Q-WHQ"/>
                             </mask>
                         </variation>
                     </view>
@@ -951,5 +991,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="x9b-A7-OLd"/>
+        <segue reference="hzw-d2-cjR"/>
     </inferredMetricsTieBreakers>
 </document>
