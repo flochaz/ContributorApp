@@ -107,6 +107,14 @@ class SwiftCoreDataHelper: NSObject {
         return item
     }
     
+    class func getAllItems() -> NSArray{
+        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDelegate.managedObjectContext!
+        var request = NSFetchRequest(entityName: "Item")
+        request.returnsObjectsAsFaults = false;
+        var results: NSArray = context.executeFetchRequest(request,error: nil)!
+        return results
+    }
     
     class func addConstructionTypeToItem(item: Item, constructionType: String){
         var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
