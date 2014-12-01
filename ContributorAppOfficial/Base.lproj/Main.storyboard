@@ -807,15 +807,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWT-e2-d5J">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Summary" id="Wxl-Hz-QXW"/>
-                                </items>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                </variation>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJN-8j-CO4">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Videos">
@@ -945,7 +936,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="dWT-e2-d5J"/>
                                 <exclude reference="zJN-8j-CO4"/>
                                 <exclude reference="MB3-iE-yqN"/>
                                 <exclude reference="TxE-Nd-IdM"/>
@@ -958,7 +948,6 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="dWT-e2-d5J"/>
                                 <include reference="zJN-8j-CO4"/>
                                 <include reference="MB3-iE-yqN"/>
                                 <include reference="TxE-Nd-IdM"/>
@@ -970,6 +959,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Summary" id="5mV-9y-h2y" userLabel="Summary">
+                        <barButtonItem key="rightBarButtonItem" title="Home" style="plain" id="VEG-4Y-ejR" userLabel="Home">
+                            <connections>
+                                <segue destination="XaV-ER-t5V" kind="show" id="pVi-CA-4AZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -978,6 +975,7 @@
                         <outlet property="moreImage" destination="yBi-Kj-IEE" id="4T7-wg-fs5"/>
                         <outlet property="smallImage" destination="d0d-LA-hDm" id="uDF-C0-JAT"/>
                         <outlet property="videoThumbnail" destination="YyQ-8P-Bf7" id="cCe-Y5-PgE"/>
+                        <segue destination="XaV-ER-t5V" kind="show" id="pnT-7Y-Xr0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4f-c1-yVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1121,6 +1119,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pRZ-O6-w9d"/>
         <segue reference="hzw-d2-cjR"/>
+        <segue reference="pnT-7Y-Xr0"/>
         <segue reference="x9b-A7-OLd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.17836921289999999" green="0.75553522129999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
