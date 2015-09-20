@@ -58,16 +58,16 @@ class ConstructionTableViewController: UITableViewController {
         if let segueIdentifier =  segue.identifier{
             switch segueIdentifier{
             case "toMonument":
-                var svc = segue.destinationViewController as MonumentViewController;
+                var svc = segue.destinationViewController as! MonumentViewController;
                 svc.itemIdentifier = itemIdentifier
             case "toLocation":
-                var svc = segue.destinationViewController as LocationViewController;
+                var svc = segue.destinationViewController as! LocationViewController;
                 svc.itemIdentifier = itemIdentifier
             case "toEdifice":
-                var svc = segue.destinationViewController as EdificeViewController;
+                var svc = segue.destinationViewController as! EdificeViewController;
                 svc.itemIdentifier = itemIdentifier
             default:
-                var svc = segue.destinationViewController as LocationViewController;
+                var svc = segue.destinationViewController as! LocationViewController;
                 svc.itemIdentifier = itemIdentifier
         }
         }

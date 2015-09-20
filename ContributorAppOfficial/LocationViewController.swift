@@ -76,7 +76,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
         self.searchBar.resignFirstResponder()
         println("searchBarBUttonCLicked Called !")
         var geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(self.searchBar.text,  {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+        geocoder.geocodeAddressString(self.searchBar.text,  completionHandler: {(placemarks: [AnyObject]!, error: NSError!) -> Void in
             if let placemark = placemarks?[0] as? CLPlacemark {
                 println("Place Mark Found")
                 self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
@@ -91,7 +91,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UISearchBarDe
             SwiftCoreDataHelper.addLocationToItem(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)!, latitude:itemLocation.latitude, longitude:itemLocation.longitude)
         }
         if segue.destinationViewController is AddInfoViewController{
-            var svc = segue.destinationViewController as AddInfoViewController;
+            var svc = segue.destinationViewController as! AddInfoViewController;
             
             svc.itemIdentifier = itemIdentifier
         }

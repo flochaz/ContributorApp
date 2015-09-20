@@ -14,12 +14,12 @@ class SwiftCoreDataHelper: NSObject {
     
     
     class func createImage(imageUrl: NSURL, imageData:NSData) -> String{
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         
         if (!imageAlreadyExist(imageUrl.absoluteString!)){
             println("create new Image \(imageUrl.absoluteString)")
-            var image:Image = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as Image
+            var image:Image = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Image), inManagedObjectContext: context) as! Image
             image.imageData = imageData
             image.url =  imageUrl.absoluteString!
             if let location:CLLocation = ImageManagementHelper.getPhotoLocationCoordinateFromUrl(imageUrl) {
@@ -43,7 +43,7 @@ class SwiftCoreDataHelper: NSObject {
     
     class func getImageFromIdentifier(imageUrl:String) -> Image?{
         var image:Image?
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         
         var request = NSFetchRequest(entityName: "Image")
@@ -60,7 +60,7 @@ class SwiftCoreDataHelper: NSObject {
     }
     
     class func addImageToItem(item:Item, image:Image) {
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         image.item = item
         //TODO: Manage save error
@@ -71,11 +71,11 @@ class SwiftCoreDataHelper: NSObject {
     
     
     class func createItem() ->  String {
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         var item:Item!
         
-        item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as Item
+        item  = NSEntityDescription.insertNewObjectForEntityForName(NSStringFromClass(Item), inManagedObjectContext: context) as! Item
         item.identifier = NSUUID().UUIDString
         println("item identifier : " + item.identifier)
         //TODO: Manage save error
@@ -87,7 +87,7 @@ class SwiftCoreDataHelper: NSObject {
     
     class func getItemFromIdentifier(itemId:String) -> Item? {
         var item:Item?
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         
         var request = NSFetchRequest(entityName: "Item")
@@ -108,7 +108,7 @@ class SwiftCoreDataHelper: NSObject {
     }
     
     class func getAllItems() -> NSArray{
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         var request = NSFetchRequest(entityName: "Item")
         request.returnsObjectsAsFaults = false;
@@ -117,21 +117,21 @@ class SwiftCoreDataHelper: NSObject {
     }
     
     class func addConstructionTypeToItem(item: Item, constructionType: String){
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         item.constructionType = constructionType
         context.save(nil)
     }
     
     class func addSubConstructionTypeToItem(item: Item, subConstructionType: String){
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         item.subConstructionType = subConstructionType
         context.save(nil)
     }
     
     class func addLocationToItem(item:Item, latitude:Double, longitude:Double){
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         item.latitude = latitude
         item.longitude = longitude
@@ -140,7 +140,7 @@ class SwiftCoreDataHelper: NSObject {
     
     
     class func updateItemDescription(item:Item, itemName:String, itemBuilder:String, itemStartBuildDate:NSDate, itemEndBuildDate:NSDate, itemWhyBuild:String){
-        var appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context:NSManagedObjectContext = appDelegate.managedObjectContext!
         item.name = itemName
         item.builder = itemBuilder
@@ -151,7 +151,7 @@ class SwiftCoreDataHelper: NSObject {
     }
     
     class func getRandomImageFromItem(item:Item) -> Image?{
-        let image = item.image.anyObject() as Image?
+        let image = item.image.anyObject() as! Image?
         return image
     }
     

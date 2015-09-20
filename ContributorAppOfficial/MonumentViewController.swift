@@ -28,7 +28,7 @@ class MonumentViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.destinationViewController is MonumentTableViewController{
-            var svc = segue.destinationViewController as MonumentTableViewController;
+            var svc = segue.destinationViewController as! MonumentTableViewController;
             
             svc.itemIdentifier = itemIdentifier
         }

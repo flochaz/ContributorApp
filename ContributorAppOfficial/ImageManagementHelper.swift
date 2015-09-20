@@ -23,7 +23,7 @@ class ImageManagementHelper: NSObject {
                 var iref = assetRep.fullResolutionImage().takeUnretainedValue()
                 var image =  UIImage(CGImage: iref)
                 if(asset.valueForProperty(ALAssetPropertyLocation) != nil){
-                    location = asset.valueForProperty(ALAssetPropertyLocation) as CLLocation?
+                    location = (asset.valueForProperty(ALAssetPropertyLocation) as? CLLocation?)!
                     println("Image Location")
                     println(location)
                 }else

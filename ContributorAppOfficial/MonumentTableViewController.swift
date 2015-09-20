@@ -53,7 +53,7 @@ class MonumentTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var svc = segue.destinationViewController as LocationViewController;
+        var svc = segue.destinationViewController as! LocationViewController;
         if(!itemIdentifier.isEmpty){
             svc.itemIdentifier = itemIdentifier
         }else{

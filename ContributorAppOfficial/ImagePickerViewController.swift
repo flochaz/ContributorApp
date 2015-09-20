@@ -33,12 +33,12 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])  {
         
-        imageUrl = info.objectForKey(UIImagePickerControllerReferenceURL) as NSURL?
+        imageUrl = info[UIImagePickerControllerReferenceURL] as? NSURL
         
         
-        pickedImage = info.objectForKey(UIImagePickerControllerOriginalImage) as? UIImage
+        pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageInfo = info
         imageView.image = pickedImage
         doneButton.enabled = true
@@ -46,11 +46,7 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
         
     }
     
-    // Refactoring the code to get location seems to not be working so keeping it inside the image picker for the moment : need investigation
-        
-    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
+ 
     
     
     func initiateItemWithImage(sender: AnyObject) {
@@ -79,7 +75,7 @@ class ImagePickerViewController: UIViewController,UIImagePickerControllerDelegat
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         initiateItemWithImage(self);
-        var svc = segue.destinationViewController as ConstructionViewController;
+        var svc = segue.destinationViewController as! ConstructionViewController;
         
         if(!itemIdentifier.isEmpty){
         svc.itemIdentifier = itemIdentifier

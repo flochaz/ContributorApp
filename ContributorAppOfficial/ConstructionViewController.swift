@@ -28,7 +28,7 @@ class ConstructionViewController: UIViewController, MKMapViewDelegate {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.destinationViewController is ConstructionTableViewController{
-        var svc = segue.destinationViewController as ConstructionTableViewController;
+        var svc = segue.destinationViewController as! ConstructionTableViewController;
         
         svc.itemIdentifier = itemIdentifier
         }

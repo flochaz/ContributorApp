@@ -54,12 +54,12 @@ class ItemSummaryViewController: UIViewController, UIImagePickerControllerDelega
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
-        var imageUrl = info.objectForKey(UIImagePickerControllerReferenceURL) as NSURL?
+        var imageUrl = info[UIImagePickerControllerReferenceURL] as! NSURL?
         
         
-        var pickedImage = info.objectForKey(UIImagePickerControllerOriginalImage) as? UIImage
+        var pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         var imageInfo = info
         largeImage.image = pickedImage
         
@@ -76,7 +76,7 @@ class ItemSummaryViewController: UIViewController, UIImagePickerControllerDelega
     
     // Refactoring the code to get location seems to not be working so keeping it inside the image picker for the moment : need investigation
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     

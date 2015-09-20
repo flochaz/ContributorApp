@@ -55,13 +55,7 @@ class AddInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         textView.resignFirstResponder()
         return true
     }
-    
-    /**
-    * Called when the user click on the view (outside the UITextField).
-    */
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-    }
+
 
     
     //MARK: - Keyboard Management Methods
@@ -82,7 +76,7 @@ class AddInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     // Called when the UIKeyboardDidShowNotification is sent.
     func keyboardWillBeShown(n: NSNotification) {
         let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         // in iOS 8, keyboard and fullscreen views are in same coordinate space
         // however, I'm keeping this line because our view might not be fullscreen
         r = self.slidingView.convertRect(r, fromView:nil)
@@ -123,7 +117,7 @@ class AddInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         SwiftCoreDataHelper.updateItemDescription(SwiftCoreDataHelper.getItemFromIdentifier(itemIdentifier)!, itemName:nameTextField.text, itemBuilder:builderTextField.text, itemStartBuildDate:buildDateDate, itemEndBuildDate:buildDateDate, itemWhyBuild:whyTextField.text)
         if segue.destinationViewController is ItemSummaryViewController{
-            var svc = segue.destinationViewController as ItemSummaryViewController;
+            var svc = segue.destinationViewController as! ItemSummaryViewController;
             
             svc.itemIdentifier = itemIdentifier
         }

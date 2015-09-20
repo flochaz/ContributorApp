@@ -28,7 +28,7 @@ class EdificeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.destinationViewController is EdificeTableViewController{
-            var svc = segue.destinationViewController as EdificeTableViewController;
+            var svc = segue.destinationViewController as! EdificeTableViewController;
             
             svc.itemIdentifier = itemIdentifier
         }

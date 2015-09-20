@@ -51,11 +51,11 @@ class EdificeTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var svc = segue.destinationViewController as LocationViewController;
+        var svc = segue.destinationViewController as? LocationViewController;
         if(!itemIdentifier.isEmpty){
-            svc.itemIdentifier = itemIdentifier
+            svc!.itemIdentifier = itemIdentifier
         }else{
-            svc.itemIdentifier = "NO IDENTIFIER"
+            svc!.itemIdentifier = "NO IDENTIFIER"
         }
         
         // Get the new view controller using segue.destinationViewController.

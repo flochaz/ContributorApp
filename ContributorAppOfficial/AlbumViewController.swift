@@ -26,7 +26,7 @@ class AlbumViewController: UICollectionViewController {
         let results:NSArray = SwiftCoreDataHelper.getAllItems()
         
         for item in results{
-            let singleItem:Item = item as Item
+            let singleItem:Item = item as! Item
             if let randomImage = SwiftCoreDataHelper.getRandomImageFromItem(singleItem){
                 var randomImageData:NSData = randomImage.imageData
                 let itemDict:NSDictionary = ["identifier":singleItem.identifier,"itemName":singleItem.name,"itemImageData":randomImageData]
@@ -81,12 +81,12 @@ class AlbumViewController: UICollectionViewController {
         //2.
         //You can create a Class file for UICollectionViewCell and Set the appropriate component and assign the value to that class
         
-        let cell : AlbumCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as AlbumCell
+        let cell : AlbumCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumCell
         cell.backgroundView = UIImageView(image: UIImage(named: "photo-frame.png")) as UIView
-        let itemDict:NSDictionary = items.objectAtIndex(indexPath.row) as NSDictionary
+        let itemDict:NSDictionary = items.objectAtIndex(indexPath.row) as! NSDictionary
         
-        let itemName = itemDict.objectForKey("itemName") as String
-        let imageData:NSData = itemDict.objectForKey("itemImageData") as NSData
+        let itemName = itemDict.objectForKey("itemName") as! String
+        let imageData:NSData = itemDict.objectForKey("itemImageData") as! NSData
         
         let itemImage = UIImage(data: imageData)
         
@@ -102,12 +102,12 @@ class AlbumViewController: UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.destinationViewController is ItemSummaryViewController{
-            let indexPath: NSIndexPath = self.collectionView.indexPathForCell(sender as UICollectionViewCell)!
-            let itemDict:NSDictionary = items.objectAtIndex(indexPath.row) as NSDictionary
+            let indexPath: NSIndexPath = self.collectionView!.indexPathForCell(sender as! UICollectionViewCell)!
+            let itemDict:NSDictionary = items.objectAtIndex(indexPath.row) as! NSDictionary
             println("itemChoosen")
-            itemIdentifier = itemDict.objectForKey("identifier") as String
+            itemIdentifier = itemDict.objectForKey("identifier") as! String
 
-            var svc = segue.destinationViewController as ItemSummaryViewController;
+            var svc = segue.destinationViewController as! ItemSummaryViewController;
             svc.itemIdentifier = itemIdentifier
         }
         // Get the new view controller using segue.destinationViewController.
